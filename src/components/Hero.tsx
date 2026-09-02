@@ -1,33 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArrowDown, Pause, Play } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { ArrowDown } from 'lucide-react';
 import { ActionLink } from './ActionLink';
 import { ProgramHighlight } from './ProgramHighlight';
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const syncPlayback = () => {
       if (media.matches) videoRef.current?.pause();
-      else void videoRef.current?.play().catch(() => setPlaying(false));
+      else void videoRef.current?.play().catch(() => undefined);
     };
     syncPlayback();
     media.addEventListener('change', syncPlayback);
     return () => media.removeEventListener('change', syncPlayback);
   }, []);
 
-  const toggleVideo = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.paused) void video.play().catch(() => setPlaying(false));
-    else video.pause();
-  };
-
   return (
     <section id="inicio" className="hero-section relative w-full overflow-hidden bg-black" aria-labelledby="hero-title">
-      <video ref={videoRef} className="hero-video absolute inset-0 h-full w-full object-cover" loop muted playsInline src="./media/edu-hero-2.mp4" poster="./media/edu-hero-2-poster.jpg" preload="metadata" aria-hidden="true" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} />
+      <video ref={videoRef} className="hero-video absolute inset-0 h-full w-full object-cover" loop muted playsInline src="./media/edu-hero-2.mp4" poster="./media/edu-hero-2-poster.jpg" preload="metadata" aria-hidden="true" />
       <div className="hero-shade absolute inset-0" />
       <div className="hero-topline"><span className="status-dot" /> Educação para empresas. Evolução para pessoas.</div>
       <div className="hero-content">
@@ -42,7 +34,7 @@ export function Hero() {
         </div>
         <ProgramHighlight />
       </div>
-      <div className="hero-bottom"><span>Treinamentos · Workshops · Mentorias · Consultorias</span><button type="button" onClick={toggleVideo} aria-label={playing ? 'Pausar vídeo de fundo' : 'Reproduzir vídeo de fundo'} className="video-control">{playing ? <Pause size={13} aria-hidden="true" /> : <Play size={13} aria-hidden="true" />}<span>{playing ? 'Pausar vídeo' : 'Reproduzir vídeo'}</span></button></div>
+      <div className="hero-bottom"><span>Treinamentos · Workshops · Mentorias · Consultorias</span></div>
     </section>
   );
 }

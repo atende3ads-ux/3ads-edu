@@ -57,6 +57,7 @@ src/
   main.tsx                   entrada React
   components/
     ActionLink.tsx           botão-link compartilhado
+    ClientLogos.tsx          carrossel contínuo das oito marcas
     Hero.tsx                 vídeo e abertura
     Logo.tsx                 logo oficial EDU, nas versões branca e azul
     Navbar.tsx               navegação fixa e menu mobile
@@ -100,9 +101,11 @@ Todos os logos e fotografias estão salvos localmente, sem dependência de hotli
 - [Growth e Sales](https://3ads.com.br/produtos-edu/growth-e-sales/): foto de turma.
 - [Nevio](https://nevio-website-template.webflow.io/): referência de diagramação e movimento; sem reutilização de scripts ou imagens do template.
 
-`edu-hero-2.mp4` é o vídeo escolhido pelo usuário: aproximadamente 6 segundos, 1920 × 1080, 24 fps, 1,68 MB, H.264, sem áudio e faststart. Os originais do Desktop não foram modificados. O vídeo tem controle de pausa, imagem de capa e não inicia automaticamente quando o sistema solicita movimento reduzido.
+`edu-hero-2.mp4` é o vídeo escolhido pelo usuário: aproximadamente 6 segundos, 1920 × 1080, 24 fps, 1,68 MB, H.264, sem áudio e faststart. Os originais do Desktop não foram modificados. O vídeo reproduz automaticamente em loop, sem controles visíveis, e tem imagem de capa. Não inicia automaticamente quando o sistema solicita movimento reduzido.
 
 Geist é carregada pelo Google Fonts, com fallback local para a fonte do sistema. As animações usam CSS e IntersectionObserver, sem bibliotecas adicionais. A arte de IA é composta em CSS, sem imagens geradas.
+
+A faixa de marcas usa duas sequências idênticas em um loop linear, independente da rolagem, sem pausa no hover e sem controles visíveis. A cópia visual é oculta dos leitores de tela. Com movimento reduzido no sistema, todas as marcas aparecem em uma grade estática.
 
 ## Acessibilidade
 
