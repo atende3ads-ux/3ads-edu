@@ -1,0 +1,25 @@
+# Dependências instaladas
+node_modules/
+
+# Saídas de build e caches
+dist/
+.vite/
+*.tsbuildinfo
+*.log
+
+# Arquivos locais do macOS
+.DS_Store
+
+# Configurações privadas e credenciais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editores e relatórios locais
+.idea/
+.vscode/
+coverage/
+playwright-report/
+test-results/

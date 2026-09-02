@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // O arquivo-fonte encaminha o duplo clique para o build pronto.
+      // No servidor de desenvolvimento e no HTML compilado, não redireciona.
+      if (window.location.protocol === 'file:' && !document.documentElement.hasAttribute('data-standalone')) {
+        window.location.replace('./dist/index.html');
+      }
+    </script>
+    <meta name="theme-color" content="#182323" />
+    <meta name="description" content="Desenvolva sua equipe em IA, marketing e vendas. Programas práticos da 3ADS EDU, construídos para os desafios da sua empresa." />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <title>3ADS EDU — O próximo salto começa no seu time</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Ative o JavaScript para visualizar esta página.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
