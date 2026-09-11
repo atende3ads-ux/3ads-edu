@@ -24,10 +24,8 @@ function Programs() {
         <Reveal>
           <article className="featured-program">
             <div className="ai-art" aria-hidden="true">
+              <img src={`./images/${featured.image}`} alt="" width="1400" height="788" decoding="async" />
               <div className="art-top"><span>IA + INTELIGÊNCIA HUMANA</span><span>01 / 07</span></div>
-              <div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="orbit orbit-three" />
-              <div className="ai-core">IA<span>possibilidades em movimento</span></div>
-              <span className="orbit-node node-one">ideias</span><span className="orbit-node node-two">pessoas</span><span className="orbit-node node-three">negócios</span>
               <div className="art-bottom"><span className="status-dot" /> O FUTURO JÁ ESTÁ NA SUA ROTINA.</div>
             </div>
             <div className="featured-program-copy">
@@ -42,9 +40,11 @@ function Programs() {
           {programs.slice(1).map((program, index) => (
             <Reveal key={program.slug} delay={(index % 2) * 75}>
               <article className="program-card">
+                <img className="program-card-image" src={`./images/${program.image}`} alt={program.alt} width="1400" height="788" loading="lazy" decoding="async" />
                 <div className="program-meta"><span>0{index + 2}</span><span>{program.category}</span></div>
-                <h3>{program.title}</h3><p>{program.description}</p>
-                <a href={`https://3ads.com.br/produtos-edu/${program.slug}/`} target="_blank" rel="noopener noreferrer" className="program-link" aria-label={`Conhecer o programa: ${program.title}`}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></a>
+                <div className="program-card-copy"><h3>{program.title}</h3><p>{program.description}</p>
+                  <a href={`https://3ads.com.br/produtos-edu/${program.slug}/`} target="_blank" rel="noopener noreferrer" className="program-link" aria-label={`Conhecer o programa: ${program.title}`}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></a>
+                </div>
               </article>
             </Reveal>
           ))}
