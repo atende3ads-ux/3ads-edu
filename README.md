@@ -100,6 +100,7 @@ Todos os logos e fotografias estão salvos localmente, sem dependência de hotli
 - [Sobre a 3ADS](https://3ads.com.br/sobre-nos/): retratos dos mentores.
 - [Growth e Sales](https://3ads.com.br/produtos-edu/growth-e-sales/): foto de turma.
 - [Nevio](https://nevio-website-template.webflow.io/): referência de diagramação e movimento; sem reutilização de scripts ou imagens do template.
+- Foto da equipe: arquivo original fornecido pelo usuário, convertido para WebP em 1600 × 1200 para uso no site. O JPG original permanece preservado fora do projeto.
 
 `edu-hero-2.mp4` é o vídeo escolhido pelo usuário: aproximadamente 6 segundos, 1920 × 1080, 24 fps, 1,68 MB, H.264, sem áudio e faststart. Os originais do Desktop não foram modificados. O vídeo reproduz automaticamente em loop, sem controles visíveis, e tem imagem de capa. Não inicia automaticamente quando o sistema solicita movimento reduzido.
 

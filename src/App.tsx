@@ -113,7 +113,7 @@ export default function App() {
             <Reveal><SectionLabel>O próximo passo</SectionLabel><h2 id="challenge-title" className="challenge-title">Sua empresa tem planos grandes.<br /><span className="muted">Seu time precisa</span> estar pronto<span className="blue-period">.</span></h2></Reveal>
             <Reveal className="challenge-description"><span className="section-symbol" aria-hidden="true">↗</span><p>Adotar novas ferramentas. Melhorar a operação. Encontrar novas formas de vender.</p><p>Cada movimento da empresa pede novas capacidades de quem está nela. A 3ADS EDU conecta esses desafios ao desenvolvimento das pessoas.</p></Reveal>
             <div className="challenge-grid">
-              <Reveal className="challenge-photo image-hover"><img src="./images/encontro-3ads.webp" alt="Carlos Costa compartilhando conhecimento com uma equipe durante um encontro da 3ADS" width="759" height="535" loading="lazy" decoding="async" /><div className="photo-caption">Conhecimento que sai da teoria.<ArrowUpRight size={22} aria-hidden="true" /></div></Reveal>
+              <Reveal className="challenge-photo image-hover"><img src="./images/equipe-3ads-educacao.webp" alt="Grupo de profissionais reunido, com integrantes da 3ADS na primeira fila" width="1600" height="1200" loading="lazy" decoding="async" /><div className="photo-caption">Conhecimento que sai da teoria.<ArrowUpRight size={22} aria-hidden="true" /></div></Reveal>
               <Reveal className="benefits-card" delay={100}><p className="eyebrow">APRENDER PARA AVANÇAR</p>{[
                 ['Clareza para decidir.', 'Entender o que merece atenção e escolher os próximos passos.'],
                 ['Repertório para resolver.', 'Encontrar novas respostas para problemas que se repetem.'],
