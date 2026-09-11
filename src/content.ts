@@ -18,10 +18,10 @@ export const programs = [
 ] as const;
 
 export const formats = [
-  { name: 'Treinamentos', description: 'Para desenvolver habilidades que a equipe precisa aplicar.', image: 'treinamento-3ads.png', alt: 'Participantes trabalhando com notebooks em um treinamento da 3ADS' },
-  { name: 'Workshops', description: 'Para explorar um tema e colocar o time em prática.', image: 'workshop-3ads.png', alt: 'Carlos Costa conduzindo um workshop com participantes em sala' },
-  { name: 'Mentorias', description: 'Para apoiar líderes em decisões e desafios específicos.', image: 'turma-3ads.png', alt: 'Registro de uma turma em um encontro de formação da 3ADS' },
-  { name: 'Consultorias', description: 'Para analisar processos e orientar os próximos passos.', image: 'encontro-3ads.webp', alt: 'Encontro da 3ADS com profissionais em uma sala de aprendizagem' },
+  { name: 'Treinamentos', description: 'Para desenvolver habilidades que a equipe precisa aplicar.', image: 'formato-treinamentos.webp', alt: 'Participantes reunidos após um treinamento de inteligência artificial da 3ADS', position: 'center 56%' },
+  { name: 'Workshops', description: 'Para explorar um tema e colocar o time em prática.', image: 'formato-workshops.webp', alt: 'Carlos Costa conduzindo um workshop diante de participantes', position: 'center 45%' },
+  { name: 'Mentorias', description: 'Para apoiar líderes em decisões e desafios específicos.', image: 'formato-mentorias.webp', alt: 'Guilherme Medeiros apresentando uma aplicação de inteligência artificial', position: 'center 45%' },
+  { name: 'Consultorias', description: 'Para analisar processos e orientar os próximos passos.', image: 'formato-consultorias.webp', alt: 'Equipe e participantes reunidos em uma experiência conduzida pela 3ADS', position: 'center' },
 ] as const;
 
 export const steps = [

@@ -70,7 +70,7 @@ function Formats() {
             <p className="format-note"><Globe2 size={18} aria-hidden="true" /> Presencial ou online. Onde o seu time estiver.</p>
           </Reveal>
           <Reveal className="format-photo">
-            <img key={formats[active].image} src={`./images/${formats[active].image}`} alt={formats[active].alt} loading="lazy" decoding="async" width="700" height="536" />
+            <img key={formats[active].image} src={`./images/${formats[active].image}`} alt={formats[active].alt} style={{ objectPosition: formats[active].position }} loading="lazy" decoding="async" width="700" height="536" />
             <span className="photo-caption"><span className="status-dot" /> Gente aprendendo com gente.</span>
           </Reveal>
         </div>
