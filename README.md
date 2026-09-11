@@ -103,6 +103,7 @@ Todos os logos e fotografias estão salvos localmente, sem dependência de hotli
 - Foto da equipe: arquivo original fornecido pelo usuário, convertido para WebP em 1600 × 1200 para uso no site. O JPG original permanece preservado fora do projeto.
 - Fotos dos formatos: quatro arquivos fornecidos pelo usuário, renomeados semanticamente e convertidos para WebP; o arquivo RAW do Carlos foi revelado localmente antes da compressão. Os originais permanecem preservados fora do projeto.
 - Foto da seção de experiências: arquivo fornecido pelo usuário e convertido para WebP em 1200 × 1600. O JPG original permanece preservado fora do projeto.
+- Retrato atualizado de Nathália Machado: arquivo fornecido pelo usuário, recortado e convertido para WebP em 576 × 576 para manter a proporção dos demais trainers. O PNG original permanece preservado fora do projeto.
 
 `edu-hero-2.mp4` é o vídeo escolhido pelo usuário: aproximadamente 6 segundos, 1920 × 1080, 24 fps, 1,68 MB, H.264, sem áudio e faststart. Os originais do Desktop não foram modificados. O vídeo reproduz automaticamente em loop, sem controles visíveis, e tem imagem de capa. Não inicia automaticamente quando o sistema solicita movimento reduzido.
 

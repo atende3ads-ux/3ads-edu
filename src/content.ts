@@ -38,9 +38,21 @@ export const mentors = [
 ] as const;
 
 export const questions = [
-  { question: 'O conteúdo é adaptado à minha empresa?', answer: 'Sim. Consideramos os objetivos do negócio e o nível da equipe para conectar o conteúdo aos desafios da sua empresa.' },
-  { question: 'Os encontros são presenciais ou online?', answer: 'As duas opções estão disponíveis. O formato é definido conforme as necessidades da sua equipe.' },
-  { question: 'Minha equipe precisa ter conhecimento prévio?', answer: 'Não necessariamente. O conteúdo pode atender diferentes níveis de experiência, de quem está começando a quem quer aprofundar a prática.' },
+  { question: 'O conteúdo é adaptado à minha empresa?', answer: 'Sim. Consideramos os objetivos do negócio, o contexto da empresa e o nível de conhecimento da equipe para conectar o conteúdo aos desafios reais dos participantes.' },
+  { question: 'Os encontros são presenciais ou online?', answer: 'Os programas podem ser realizados presencialmente ou online. O formato mais adequado é definido de acordo com os objetivos, o perfil dos participantes e a dinâmica desejada para a experiência.' },
+  { question: 'Minha equipe precisa ter conhecimento prévio?', answer: 'Não necessariamente. Antes do programa, entendemos o nível de conhecimento dos participantes para ajustar a linguagem, a profundidade e as atividades. Quando houver algum pré-requisito, ele será informado previamente.' },
+  { question: 'Quais formatos de programa estão disponíveis?', answer: 'A 3ADS EDU desenvolve workshops, imersões, treinamentos, consultorias e mentorias. A recomendação do formato acontece depois de entendermos o desafio e o resultado que sua empresa deseja alcançar.' },
+  { question: 'Como sei qual programa é ideal para a minha equipe?', answer: 'Começamos com uma conversa de diagnóstico. A partir dela, avaliamos o desafio, o público, o momento da empresa e os objetivos esperados para recomendar a solução mais adequada.' },
+  { question: 'Os programas são apenas teóricos?', answer: 'Não. Os conteúdos são conectados à prática e podem incluir exercícios, discussões, ferramentas, produção de materiais e aplicação em desafios reais da empresa.' },
+  { question: 'É possível criar uma trilha com vários encontros?', answer: 'Sim. Dependendo do objetivo, o programa pode ser estruturado como uma jornada com módulos, atividades entre os encontros e momentos de acompanhamento.' },
+  { question: 'Qual é a duração de um programa?', answer: 'A duração varia conforme o formato, o tema, a quantidade de participantes e a profundidade necessária. Depois do diagnóstico, apresentamos uma proposta com carga horária e cronograma recomendados.' },
+  { question: 'Quantas pessoas podem participar?', answer: 'O número ideal depende do formato escolhido. Algumas experiências funcionam melhor com grupos menores e mais interação; outras podem atender públicos maiores. Essa definição faz parte do desenho do programa.' },
+  { question: 'Quem conduz os encontros?', answer: 'Os programas são conduzidos por trainers selecionados de acordo com o tema, os objetivos do projeto e o perfil dos participantes. Antes da realização, todo o conteúdo e a dinâmica são alinhados com a equipe da 3ADS EDU.' },
+  { question: 'Como os resultados são acompanhados?', answer: 'Definimos critérios de sucesso de acordo com cada projeto. Podemos acompanhar indicadores como participação, aprendizagem, aplicação prática, satisfação e evolução dos compromissos assumidos.' },
+  { question: 'O suporte termina depois do último encontro?', answer: 'O encerramento inclui a coleta de feedbacks, o registro de aprendizados e a avaliação dos próximos passos. Quando fizer sentido, também podemos recomendar uma nova etapa, mentoria ou ação de continuidade.' },
+  { question: 'É possível contratar um programa que ainda não está no portfólio?', answer: 'Sim. Também desenvolvemos soluções personalizadas. Primeiro avaliamos a necessidade e a viabilidade do projeto; depois definimos formato, escopo, cronograma e entregáveis.' },
+  { question: 'Como funciona o investimento?', answer: 'O investimento é definido conforme o formato, a carga horária, o nível de personalização, o número de participantes e a logística envolvida. Após a conversa inicial, você recebe uma proposta clara com o escopo completo.' },
+  { question: 'Como faço para solicitar uma proposta?', answer: 'Fale com a nossa equipe e conte brevemente qual é o desafio da sua empresa, quem participará e qual resultado vocês buscam. A partir disso, marcamos uma conversa para entender o cenário e indicar o melhor caminho.' },
 ] as const;
 
 // Clientes da 3ADS em diferentes frentes. Não representa uma lista de clientes EDU.
