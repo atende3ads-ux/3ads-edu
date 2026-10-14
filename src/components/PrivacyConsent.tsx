@@ -94,7 +94,7 @@ export function PrivacyConsent() {
             <ShieldCheck size={23} aria-hidden="true" />
             <div>
               <h2 id="privacy-banner-title">Suas escolhas de privacidade</h2>
-              <p>Usamos armazenamento necessário para lembrar sua decisão. Medição e publicidade só são ativadas após sua escolha.</p>
+              <p>O Google Tag Manager é carregado como necessário. Analytics e publicidade seguem as preferências escolhidas abaixo.</p>
             </div>
           </div>
           <div className="privacy-banner-actions">
@@ -118,7 +118,7 @@ export function PrivacyConsent() {
 
             <div className="privacy-categories">
               <article className="privacy-category">
-                <div><h3>Necessários</h3><p>Salvam exclusivamente suas preferências de privacidade e mantêm funções essenciais da página.</p></div>
+                <div><h3>Necessários</h3><p>Salvam suas preferências, mantêm funções essenciais e carregam o Google Tag Manager junto com a página.</p></div>
                 <span className="privacy-always"><Check size={15} aria-hidden="true" /> Sempre ativo</span>
               </article>
               <article className="privacy-category">
@@ -129,7 +129,7 @@ export function PrivacyConsent() {
               </article>
             </div>
 
-            <p className="privacy-technical-note">O contêiner atual reúne Analytics e Marketing. Por segurança, nenhum rastreador é carregado quando apenas uma categoria opcional está ativa.</p>
+            <p className="privacy-technical-note">O contêiner GTM é sempre carregado. As escolhas de Analytics e Marketing são enviadas ao Consent Mode para que as tags respeitem suas preferências.</p>
             <p className="privacy-contact">Dúvidas sobre privacidade: <a href="mailto:atendimento@3adsedu.com.br">atendimento@3adsedu.com.br</a>.</p>
 
             <footer className="privacy-panel-actions">

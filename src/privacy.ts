@@ -78,11 +78,6 @@ function clearOptionalCookies() {
 
 function applyConsent(preferences: ConsentPreferences) {
   dataLayerCommand('consent', 'update', consentState(preferences));
-
-  // O contêiner publicado reúne GA4, Meta e Clarity sem separação comprovada
-  // por categoria. No modo básico, ele só é carregado quando ambas as
-  // categorias opcionais foram autorizadas, evitando disparos parciais.
-  if (preferences.analytics && preferences.marketing) loadTagManager();
 }
 
 export function initializePrivacy() {
@@ -93,6 +88,7 @@ export function initializePrivacy() {
 
   const saved = readConsentPreferences();
   if (saved) applyConsent(saved);
+  loadTagManager();
 }
 
 export function saveConsentPreferences(values: Pick<ConsentPreferences, 'analytics' | 'marketing'>) {
@@ -114,11 +110,12 @@ export function saveConsentPreferences(values: Pick<ConsentPreferences, 'analyti
   applyConsent(preferences);
   window.dispatchEvent(new CustomEvent(PRIVACY_EVENT, { detail: preferences }));
 
-  const tagsWereLoaded = Boolean(previous?.analytics && previous?.marketing);
-  const tagsMustStop = tagsWereLoaded && !(preferences.analytics && preferences.marketing);
-  if (tagsMustStop) {
+  const optionalConsentRevoked = Boolean(previous && (
+    (previous.analytics && !preferences.analytics) ||
+    (previous.marketing && !preferences.marketing)
+  ));
+  if (optionalConsentRevoked) {
     clearOptionalCookies();
-    window.location.reload();
   }
 
   return preferences;

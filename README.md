@@ -85,7 +85,8 @@ Os botões de contato abrem o WhatsApp oficial **+55 (62) 98200-5986**, com a me
 - Consentimento em modo básico, com estado inicial negado para `analytics_storage`, `ad_storage`, `ad_user_data` e `ad_personalization`.
 - O visitante pode aceitar, rejeitar, personalizar e reabrir as preferências pelo rodapé. A decisão, a data, o modo e a versão `1.0` ficam em `localStorage` sob `3adsedu_privacy_preferences`.
 - `GTM-K82W4KD` é a fonte única do rastreamento. O contêiner público já contém `G-KSCEVLS4H0`, Meta Pixel e Microsoft Clarity, portanto o GA4 não é carregado novamente pelo HTML.
-- Como o contêiner publicado reúne Analytics e Marketing sem separação comprovada por consentimento, ele só é carregado quando ambas as categorias estão autorizadas. Ao revogar, a página atualiza o consentimento, remove cookies próprios conhecidos e recarrega sem o contêiner.
+- O contêiner GTM é carregado junto com a página como recurso necessário, depois que o Consent Mode define Analytics e Marketing como negados por padrão. A escolha do visitante atualiza esses sinais; ao revogar uma categoria, cookies próprios conhecidos são removidos sem descarregar o contêiner.
+- As tags publicadas dentro do GTM devem ter verificações de consentimento compatíveis com `analytics_storage`, `ad_storage`, `ad_user_data` e `ad_personalization`, inclusive tags de terceiros sem suporte nativo ao Consent Mode.
 - A ficha informa Clarity `yxrgmrz2ip`, mas o contêiner publicado usa `nbgrz39vnu`. A divergência precisa ser resolvida no GTM antes de afirmar qual propriedade recebe os dados.
 - Política de Privacidade e Termos de Uso não foram publicados: os respectivos conteúdos jurídicos e a aprovação ainda não foram fornecidos.
 
