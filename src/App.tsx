@@ -6,7 +6,9 @@ import { ActionLink } from './components/ActionLink';
 import { Logo } from './components/Logo';
 import { Reveal } from './components/Reveal';
 import { ClientLogos } from './components/ClientLogos';
+import { PrivacyConsent } from './components/PrivacyConsent';
 import { formats, mentors, navigation, programs, questions, steps } from './content';
+import { openPrivacySettings, trackAnalyticsEvent } from './privacy';
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="eyebrow section-label">{children}</p>;
@@ -24,7 +26,7 @@ function Programs() {
         <Reveal>
           <article className="featured-program">
             <div className="ai-art" aria-hidden="true">
-              <img src={`./images/${featured.image}`} alt="" width="1400" height="788" decoding="async" />
+              <img src={`./images/${featured.image}`} alt="" width="1400" height="800" decoding="async" />
               <div className="art-top"><span>IA + INTELIGÊNCIA HUMANA</span><span>01 / 07</span></div>
               <div className="art-bottom"><span className="status-dot" /> O FUTURO JÁ ESTÁ NA SUA ROTINA.</div>
             </div>
@@ -32,7 +34,7 @@ function Programs() {
               <span className="tag">Inteligência artificial</span>
               <div><h3>{featured.title}</h3><p>{featured.description}</p></div>
               <div className="flex flex-wrap gap-2">{featured.tags.map(tag => <span key={tag} className="topic-tag">{tag}</span>)}</div>
-              <a href={`https://3ads.com.br/produtos-edu/${featured.slug}/`} target="_blank" rel="noopener noreferrer" className="program-link">Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></a>
+              <a href={`https://3ads.com.br/produtos-edu/${featured.slug}/`} target="_blank" rel="noopener noreferrer" className="program-link" onClick={() => trackAnalyticsEvent('program_click', { program: featured.slug })}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></a>
             </div>
           </article>
         </Reveal>
@@ -40,10 +42,10 @@ function Programs() {
           {programs.slice(1).map((program, index) => (
             <Reveal key={program.slug} delay={(index % 2) * 75}>
               <article className="program-card">
-                <img className="program-card-image" src={`./images/${program.image}`} alt={program.alt} width="1400" height="788" loading="lazy" decoding="async" />
+                <img className="program-card-image" src={`./images/${program.image}`} alt={program.alt} width="1400" height="800" loading="lazy" decoding="async" />
                 <div className="program-meta"><span>0{index + 2}</span><span>{program.category}</span></div>
                 <div className="program-card-copy"><h3>{program.title}</h3><p>{program.description}</p>
-                  <a href={`https://3ads.com.br/produtos-edu/${program.slug}/`} target="_blank" rel="noopener noreferrer" className="program-link" aria-label={`Conhecer o programa: ${program.title}`}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></a>
+                  <a href={`https://3ads.com.br/produtos-edu/${program.slug}/`} target="_blank" rel="noopener noreferrer" className="program-link" aria-label={`Conhecer o programa: ${program.title}`} onClick={() => trackAnalyticsEvent('program_click', { program: program.slug })}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></a>
                 </div>
               </article>
             </Reveal>
@@ -113,7 +115,7 @@ export default function App() {
             <Reveal><SectionLabel>O próximo passo</SectionLabel><h2 id="challenge-title" className="challenge-title">Sua empresa tem planos grandes.<br /><span className="muted">Seu time precisa</span> estar pronto<span className="blue-period">.</span></h2></Reveal>
             <Reveal className="challenge-description"><span className="section-symbol" aria-hidden="true">↗</span><p>Adotar novas ferramentas. Melhorar a operação. Encontrar novas formas de vender.</p><p>Cada movimento da empresa pede novas capacidades de quem está nela. A 3ADS EDU conecta esses desafios ao desenvolvimento das pessoas.</p></Reveal>
             <div className="challenge-grid">
-              <Reveal className="challenge-photo image-hover"><img src="./images/equipe-3ads-educacao.webp" alt="Grupo de profissionais reunido, com integrantes da 3ADS na primeira fila" width="1600" height="1200" loading="lazy" decoding="async" /><div className="photo-caption">Conhecimento que sai da teoria.<ArrowUpRight size={22} aria-hidden="true" /></div></Reveal>
+              <Reveal className="challenge-photo image-hover"><img src="./images/equipe-3ads-educacao-800.webp" srcSet="./images/equipe-3ads-educacao-800.webp 800w, ./images/equipe-3ads-educacao.webp 1600w" sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 1536px) 55vw, 820px" alt="Grupo de profissionais reunido, com integrantes da 3ADS na primeira fila" width="800" height="600" loading="lazy" decoding="async" /><div className="photo-caption">Conhecimento que sai da teoria.<ArrowUpRight size={22} aria-hidden="true" /></div></Reveal>
               <Reveal className="benefits-card" delay={100}><p className="eyebrow">APRENDER PARA AVANÇAR</p>{[
                 ['Clareza para decidir.', 'Entender o que merece atenção e escolher os próximos passos.'],
                 ['Repertório para resolver.', 'Encontrar novas respostas para problemas que se repetem.'],
@@ -157,9 +159,10 @@ export default function App() {
       <footer className="site-footer" inert={menuOpen}>
         <div className="page-container">
           <div className="footer-top"><a href="#inicio" aria-label="3ADS EDU — voltar ao início"><Logo /></a><p>Gente preparada.<br />Empresas em movimento.</p><a className="back-top" href="#inicio" aria-label="Voltar ao início"><ArrowDown className="rotate-180" size={22} aria-hidden="true" /></a></div>
-          <div className="footer-bottom"><span>© {new Date().getFullYear()} 3ADS EDU</span><nav aria-label="Navegação do rodapé">{navigation.map(link => <a href={link.href} key={link.href}>{link.label}</a>)}</nav><a href="https://3ads.com.br/" target="_blank" rel="noopener noreferrer">Parte do ecossistema 3ADS <ArrowUpRight size={14} aria-hidden="true" /></a></div>
+          <div className="footer-bottom"><span>© {new Date().getFullYear()} 3ADS EDU</span><nav aria-label="Navegação do rodapé">{navigation.map(link => <a href={link.href} key={link.href}>{link.label}</a>)}<button type="button" onClick={openPrivacySettings}>Configurações de privacidade</button></nav><span>Desenvolvido por <a href="https://3ads.com.br/" target="_blank" rel="noopener noreferrer">3ADS <ArrowUpRight size={14} aria-hidden="true" /></a></span></div>
         </div>
       </footer>
+      <PrivacyConsent />
     </>
   );
 }

@@ -19,7 +19,7 @@ export function Hero() {
 
   return (
     <section id="inicio" className="hero-section relative w-full overflow-hidden bg-black" aria-labelledby="hero-title">
-      <video ref={videoRef} className="hero-video absolute inset-0 h-full w-full object-cover" loop muted playsInline src="./media/edu-hero-2.mp4" poster="./media/edu-hero-2-poster.jpg" preload="metadata" aria-hidden="true" />
+      <video ref={videoRef} className="hero-video absolute inset-0 h-full w-full object-cover" loop muted playsInline src="./media/edu-hero-2.mp4" poster="./media/edu-hero-2-poster.webp" preload="metadata" aria-hidden="true" />
       <div className="hero-shade absolute inset-0" />
       <div className="hero-topline"><span className="status-dot" /> Educação para empresas. Evolução para pessoas.</div>
       <div className="hero-content">

@@ -3,7 +3,7 @@
 Landing page em React + TypeScript + Tailwind CSS, com Vite e ícones Lucide. Copy adaptada para a 3ADS EDU, identidade oficial da marca e composição editorial inspirada na referência Nevio. Sem formulário ou backend.
 
 - Repositório: [atende3ads-ux/3ads-edu](https://github.com/atende3ads-ux/3ads-edu)
-- Site: [3ADS EDU no GitHub Pages](https://atende3ads-ux.github.io/3ads-edu/)
+- Site: [3adsedu.com.br](https://3adsedu.com.br/)
 
 ## Visualizar e editar
 
@@ -24,15 +24,14 @@ npm run preview    # serve o build localmente
 
 Depois de editar o código, rode `npm run build` para atualizar a versão de duplo clique. Não edite `dist/` nem `node_modules/` manualmente. O comando `build:html` continua disponível como alias de `build`.
 
-## Publicação no GitHub Pages
+## Publicação no cPanel
 
-O fluxo `.github/workflows/deploy-pages.yml` instala as dependências, verifica o TypeScript, compila o site, confere o HTML e as mídias e publica somente `dist/`.
+O servidor cPanel não possui Node.js. Por isso, o build é gerado localmente e armazenado em `deploy.zip`; o arquivo `.cpanel.yml` extrai somente o conteúdo estático em `/home1/carlo589/3adsedu.com.br`.
 
-- Cada push em `main` atualiza o site automaticamente.
-- Pull requests executam as verificações sem publicar.
-- Para republicar sem alterar arquivos, use **Actions → Publicar no GitHub Pages → Run workflow**.
-- Em **Settings → Pages**, a origem de publicação deve ser **GitHub Actions**.
-- A base relativa do Vite mantém imagens, vídeo e logo funcionando no endereço `/3ads-edu/`, no servidor local e no HTML aberto por duplo clique.
+- Execute `npm run check` antes de recriar o pacote.
+- Gere `deploy.zip` a partir do conteúdo de `dist/`, sem adicionar a pasta `dist` como nível extra.
+- O push não publica sozinho: o deploy deve ser acionado no **Git Version Control** do cPanel somente quando houver autorização específica.
+- `.htaccess` segue no pacote e aplica cache, compressão, cabeçalhos de segurança e CSP em modo Report-Only.
 
 `node_modules/`, `dist/`, caches, arquivos de editor e credenciais ficam fora do Git. As versões locais de `node_modules/` e `dist/` são preservadas. Não é necessário Git LFS para as mídias atuais.
 
@@ -79,7 +78,16 @@ scripts/
 
 A página contém abertura, marcas, desafios, sete programas, quatro formatos, metodologia, experiências, mentores, FAQ e contato.
 
-Os botões de contato abrem o WhatsApp oficial **+55 (62) 98200-5986**, com a mensagem fornecida no briefing. Não enviam a mensagem automaticamente. Os programas apontam para as respectivas páginas oficiais da 3ADS. Nenhum formulário foi incluído.
+Os botões de contato abrem o WhatsApp oficial **+55 (62) 98200-5986**, com a mensagem fornecida no briefing. Não enviam a mensagem automaticamente. Os programas apontam para as respectivas páginas oficiais da 3ADS. Nenhum formulário foi incluído. O evento `cta_click` não contém PII e só entra no `dataLayer` quando as categorias opcionais necessárias estiverem autorizadas.
+
+## Privacidade e medição
+
+- Consentimento em modo básico, com estado inicial negado para `analytics_storage`, `ad_storage`, `ad_user_data` e `ad_personalization`.
+- O visitante pode aceitar, rejeitar, personalizar e reabrir as preferências pelo rodapé. A decisão, a data, o modo e a versão `1.0` ficam em `localStorage` sob `3adsedu_privacy_preferences`.
+- `GTM-K82W4KD` é a fonte única do rastreamento. O contêiner público já contém `G-KSCEVLS4H0`, Meta Pixel e Microsoft Clarity, portanto o GA4 não é carregado novamente pelo HTML.
+- Como o contêiner publicado reúne Analytics e Marketing sem separação comprovada por consentimento, ele só é carregado quando ambas as categorias estão autorizadas. Ao revogar, a página atualiza o consentimento, remove cookies próprios conhecidos e recarrega sem o contêiner.
+- A ficha informa Clarity `yxrgmrz2ip`, mas o contêiner publicado usa `nbgrz39vnu`. A divergência precisa ser resolvida no GTM antes de afirmar qual propriedade recebe os dados.
+- Política de Privacidade e Termos de Uso não foram publicados: os respectivos conteúdos jurídicos e a aprovação ainda não foram fornecidos.
 
 ### Provas sociais pendentes
 
@@ -104,11 +112,11 @@ Todos os logos e fotografias estão salvos localmente, sem dependência de hotli
 - Fotos dos formatos: quatro arquivos fornecidos pelo usuário, renomeados semanticamente e convertidos para WebP; o arquivo RAW do Carlos foi revelado localmente antes da compressão. Os originais permanecem preservados fora do projeto.
 - Foto da seção de experiências: arquivo fornecido pelo usuário e convertido para WebP em 1200 × 1600. O JPG original permanece preservado fora do projeto.
 - Retrato atualizado de Nathália Machado: arquivo fornecido pelo usuário, recortado e convertido para WebP em 576 × 576 para manter a proporção dos demais trainers. O PNG original permanece preservado fora do projeto.
-- Thumbnails dos sete programas: série autoral gerada com a ferramenta integrada de imagens em uma direção 3D editorial consistente, sem texto ou logos, e convertida para WebP em 1400 × 788 para uso responsivo nos cards.
+- Thumbnails dos sete programas: arquivos fornecidos pelo usuário e convertidos para WebP em 1400 × 800 para uso responsivo nos cards.
 
 `edu-hero-2.mp4` é o vídeo escolhido pelo usuário: aproximadamente 6 segundos, 1920 × 1080, 24 fps, 1,68 MB, H.264, sem áudio e faststart. Os originais do Desktop não foram modificados. O vídeo reproduz automaticamente em loop, sem controles visíveis, e tem imagem de capa. Não inicia automaticamente quando o sistema solicita movimento reduzido.
 
-Geist é carregada pelo Google Fonts, com fallback local para a fonte do sistema. As animações usam CSS e IntersectionObserver, sem bibliotecas adicionais. A arte de IA é composta em CSS, sem imagens geradas.
+Geist é servida localmente em WOFF2, com fallback para a fonte do sistema. As animações usam CSS e IntersectionObserver, sem bibliotecas adicionais.
 
 A faixa de marcas usa duas sequências idênticas em um loop linear, independente da rolagem, sem pausa no hover e sem controles visíveis. A cópia visual é oculta dos leitores de tela. Com movimento reduzido no sistema, todas as marcas aparecem em uma grade estática.
 

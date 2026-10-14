@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://3adsedu.com.br/sitemap.xml
