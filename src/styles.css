@@ -66,7 +66,7 @@ h3 { letter-spacing: -.035em; font-weight: 400; }
 .text-link { display: inline-flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 500; }
 .text-link svg { transition: transform .25s; }
 .text-link:hover svg { transform: translate(2px,-2px); }
-.brand { display: block; width: 180px; height: auto; }
+.brand { display: block; width: 164px; height: auto; }
 .site-header { position: fixed; top: 34px; left: 46px; right: 46px; z-index: 100; padding: 10px 14px; color: white; transition: top .3s, color .3s, box-shadow .3s; border-radius: 12px; }
 .site-header::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: rgba(250,251,249,.95); backdrop-filter: blur(16px); opacity: 0; transition: opacity .3s; z-index: -1; }
 .site-header.is-scrolled { top: 14px; color: var(--ink); box-shadow: 0 6px 26px #1720200a; }
@@ -373,7 +373,7 @@ figcaption > span { font-size: 11px; color: var(--muted); }
   .hero-section { height: calc(100svh - 16px); min-height: 720px; border-radius: 14px; }
   .site-header { top: 20px; left: 18px; right: 18px; padding: 8px 10px; border-radius: 9px; }
   .site-header.is-scrolled { top: 10px; }
-  .brand { width: 152px; }
+  .brand { width: 138px; }
   .is-open .menu-toggle { top: 28px; right: 28px; }
   .mobile-menu { padding-inline: 25px; }
   .mobile-menu > a:not(.button-link) { font-size: 29px; }
