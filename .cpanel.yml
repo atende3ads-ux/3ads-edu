@@ -2,6 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home1/carlo589/3adsedu.com.br
-    - /usr/bin/env npm ci --include=dev
-    - /usr/bin/env npm run check
-    - /bin/cp -R dist/. "$DEPLOYPATH/"
+    - /usr/bin/unzip -o deploy.zip -d "$DEPLOYPATH"
