@@ -11,7 +11,9 @@ const htaccess = await readFile(path.join(dist, '.htaccess'), 'utf8');
 const robots = await readFile(path.join(dist, 'robots.txt'), 'utf8');
 const sitemap = await readFile(path.join(dist, 'sitemap.xml'), 'utf8');
 const privacySource = await readFile(path.join(root, 'src/privacy.ts'), 'utf8');
+const appSource = await readFile(path.join(root, 'src/App.tsx'), 'utf8');
 const programModalSource = await readFile(path.join(root, 'src/components/ProgramModal.tsx'), 'utf8');
+const programDetailsSource = await readFile(path.join(root, 'src/programDetails.ts'), 'utf8');
 
 assert.match(html, /<html\b[^>]*lang="pt-BR"[^>]*data-standalone/, 'O HTML deve ser pt-BR e permitir abertura local.');
 assert.match(html, /<title>3ADS EDU/, 'O título da página deve identificar a 3ADS EDU.');
@@ -29,8 +31,15 @@ assert.doesNotMatch(html, /googletagmanager\.com\/gtag\/js/, 'O GA4 não deve se
 assert.match(privacySource, /dataLayerCommand\('consent', 'default',[\s\S]*?loadTagManager\(\);/, 'O consentimento padrão deve ser definido antes de carregar o GTM.');
 assert.doesNotMatch(privacySource, /if \(preferences\.analytics && preferences\.marketing\) loadTagManager\(\)/, 'O GTM necessário não pode depender de consentimento opcional.');
 assert.match(html, /18 horas de imersão/, 'O modal de IA para Negócios deve incluir a carga horária publicada.');
+assert.match(appSource, /className="ai-art program-modal-image-trigger"[\s\S]*aria-haspopup="dialog"/, 'A imagem de IA para Negócios deve abrir o modal com semântica acessível.');
+for (const slug of ['ia-para-negocios', 'growth-e-sales', 'tecnicas-de-vendas-e-crm', 'atendimento-cx', 'performance', 'trafego-pago', 'personal-branding']) {
+  assert.match(programDetailsSource, new RegExp(`slug: '${slug}'`), `O conteúdo do programa ${slug} está ausente.`);
+}
+assert.doesNotMatch(appSource, /https:\/\/3ads\.com\.br\/produtos-edu\//, 'Os cards não devem redirecionar para páginas externas de programas.');
 assert.match(html, /Confira como foram outras edições/, 'O modal de IA para Negócios deve incluir a galeria de edições anteriores.');
 assert.match(html, /formato-treinamentos\.webp/, 'A galeria do programa deve incluir fotos locais de edições anteriores.');
+assert.match(html, /Preencha seus dados e receba o contato da nossa equipe com todos os detalhes\./, 'O formulário deve exibir a orientação comercial aprovada.');
+assert.doesNotMatch(programModalSource, /name="(?:company|message)"[^>]*required/, 'Empresa e mensagem devem permanecer opcionais.');
 assert.match(programModalSource, /role="dialog"[\s\S]*aria-modal="true"/, 'O modal de programa deve expor semântica acessível.');
 assert.match(html, /Validação concluída\. Nenhum dado foi enviado/, 'O formulário sem endpoint não pode simular envio bem-sucedido.');
 assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/, 'As fontes devem ser servidas localmente.');

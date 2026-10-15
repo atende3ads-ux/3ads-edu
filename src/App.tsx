@@ -18,8 +18,13 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function Programs() {
   const featured = programs[0];
-  const [programModalOpen, setProgramModalOpen] = useState(false);
-  const featuredDetails = programDetails[featured.slug];
+  const [activeProgramSlug, setActiveProgramSlug] = useState<string | null>(null);
+  const activeProgram = programs.find(({ slug }) => slug === activeProgramSlug) ?? featured;
+  const activeProgramDetails = programDetails[activeProgram.slug];
+  const openProgram = (slug: string) => {
+    trackAnalyticsEvent('program_click', { program: slug });
+    setActiveProgramSlug(slug);
+  };
   return (
     <section id="programas" className="section-space programs-section" aria-labelledby="programs-title">
       <div className="page-container">
@@ -29,19 +34,16 @@ function Programs() {
         </Reveal>
         <Reveal>
           <article className="featured-program">
-            <div className="ai-art" aria-hidden="true">
+            <button type="button" className="ai-art program-modal-image-trigger" aria-label={`Conhecer o programa: ${featured.title}`} aria-haspopup="dialog" aria-controls={`program-modal-${featured.slug}`} onClick={() => openProgram(featured.slug)}>
               <img src={`./images/${featured.image}`} alt="" width="1400" height="800" decoding="async" />
               <div className="art-top"><span>IA + INTELIGÊNCIA HUMANA</span><span>01 / 07</span></div>
               <div className="art-bottom"><span className="status-dot" /> O FUTURO JÁ ESTÁ NA SUA ROTINA.</div>
-            </div>
+            </button>
             <div className="featured-program-copy">
               <span className="tag">Inteligência artificial</span>
               <div><h3>{featured.title}</h3><p>{featured.description}</p></div>
               <div className="flex flex-wrap gap-2">{featured.tags.map(tag => <span key={tag} className="topic-tag">{tag}</span>)}</div>
-              <button type="button" className="program-link program-modal-trigger" aria-haspopup="dialog" aria-controls={`program-modal-${featured.slug}`} onClick={() => {
-                trackAnalyticsEvent('program_click', { program: featured.slug });
-                setProgramModalOpen(true);
-              }}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></button>
+              <button type="button" className="program-link program-modal-trigger" aria-haspopup="dialog" aria-controls={`program-modal-${featured.slug}`} onClick={() => openProgram(featured.slug)}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></button>
             </div>
           </article>
         </Reveal>
@@ -49,10 +51,12 @@ function Programs() {
           {programs.slice(1).map((program, index) => (
             <Reveal key={program.slug} delay={(index % 2) * 75}>
               <article className="program-card">
-                <img className="program-card-image" src={`./images/${program.image}`} alt={program.alt} width="1400" height="800" loading="lazy" decoding="async" />
+                <button type="button" className="program-card-image-trigger" aria-label={`Conhecer o programa: ${program.title}`} aria-haspopup="dialog" aria-controls={`program-modal-${program.slug}`} onClick={() => openProgram(program.slug)}>
+                  <img className="program-card-image" src={`./images/${program.image}`} alt="" width="1400" height="800" loading="lazy" decoding="async" />
+                </button>
                 <div className="program-meta"><span>0{index + 2}</span><span>{program.category}</span></div>
                 <div className="program-card-copy"><h3>{program.title}</h3><p>{program.description}</p>
-                  <a href={`https://3ads.com.br/produtos-edu/${program.slug}/`} target="_blank" rel="noopener noreferrer" className="program-link" aria-label={`Conhecer o programa: ${program.title}`} onClick={() => trackAnalyticsEvent('program_click', { program: program.slug })}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></a>
+                  <button type="button" className="program-link program-modal-trigger" aria-label={`Conhecer o programa: ${program.title}`} aria-haspopup="dialog" aria-controls={`program-modal-${program.slug}`} onClick={() => openProgram(program.slug)}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></button>
                 </div>
               </article>
             </Reveal>
@@ -61,11 +65,11 @@ function Programs() {
         <Reveal className="program-help"><div><h3>Ainda está entendendo por onde começar?</h3><p>Conte o momento da sua equipe. Vamos conversar sobre as prioridades.</p></div><ActionLink>Encontrar o programa para meu time</ActionLink></Reveal>
       </div>
       <ProgramModal
-        open={programModalOpen}
-        program={featuredDetails}
-        image={`./images/${featured.image}`}
-        imageAlt={featured.alt}
-        onClose={() => setProgramModalOpen(false)}
+        open={activeProgramSlug !== null}
+        program={activeProgramDetails}
+        image={`./images/${activeProgram.image}`}
+        imageAlt={activeProgram.alt}
+        onClose={() => setActiveProgramSlug(null)}
       />
     </section>
   );

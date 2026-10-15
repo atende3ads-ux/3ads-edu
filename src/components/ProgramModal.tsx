@@ -75,6 +75,7 @@ export function ProgramModal({ open, program, image, imageAlt, onClose }: Progra
       if (event.target === event.currentTarget) onClose();
     }}>
       <div ref={dialogRef} id={`program-modal-${program.slug}`} className="program-modal" role="dialog" aria-modal="true" aria-labelledby="program-modal-title" aria-describedby="program-modal-headline">
+        <div className="program-modal-scroll">
         <header className="program-modal-header">
           <div>
             <p className="eyebrow">{program.type} · 3ADS EDU</p>
@@ -145,28 +146,28 @@ export function ProgramModal({ open, program, image, imageAlt, onClose }: Progra
           <aside className="program-contact-card" aria-labelledby="program-contact-title">
             <p className="eyebrow">Fale com um especialista</p>
             <h3 id="program-contact-title">Tem interesse em saber mais sobre “{program.title}”?</h3>
-            <p>Preencha seus dados. Nesta primeira entrega, o formulário valida as informações sem enviá-las a um servidor.</p>
+            <p>Preencha seus dados e receba o contato da nossa equipe com todos os detalhes.</p>
 
             <form className="program-contact-form" onSubmit={handleSubmit}>
-              <label htmlFor="program-contact-name">Nome</label>
+              <label htmlFor="program-contact-name">Nome <span className="program-form-required" aria-hidden="true">*</span></label>
               <input id="program-contact-name" name="name" type="text" autoComplete="name" required />
 
               <div className="program-form-row">
                 <div>
-                  <label htmlFor="program-contact-phone">Telefone/WhatsApp</label>
+                  <label htmlFor="program-contact-phone">Telefone/WhatsApp <span className="program-form-required" aria-hidden="true">*</span></label>
                   <input id="program-contact-phone" name="phone" type="tel" autoComplete="tel" minLength={8} required />
                 </div>
                 <div>
-                  <label htmlFor="program-contact-email">E-mail</label>
+                  <label htmlFor="program-contact-email">E-mail <span className="program-form-required" aria-hidden="true">*</span></label>
                   <input id="program-contact-email" name="email" type="email" autoComplete="email" required />
                 </div>
               </div>
 
               <label htmlFor="program-contact-company">Nome da empresa</label>
-              <input id="program-contact-company" name="company" type="text" autoComplete="organization" required />
+              <input id="program-contact-company" name="company" type="text" autoComplete="organization" />
 
               <label htmlFor="program-contact-message">Mensagem</label>
-              <textarea id="program-contact-message" name="message" rows={5} required />
+              <textarea id="program-contact-message" name="message" rows={5} />
 
               <label className="program-form-terms" htmlFor="program-contact-terms">
                 <input id="program-contact-terms" name="terms" type="checkbox" required />
@@ -180,6 +181,7 @@ export function ProgramModal({ open, program, image, imageAlt, onClose }: Progra
               {validated && <p>Validação concluída. Nenhum dado foi enviado, pois esta página ainda não possui um endpoint de formulário confirmado. <a href={contactUrl} target="_blank" rel="noopener noreferrer">Continuar pelo WhatsApp</a>.</p>}
             </div>
           </aside>
+        </div>
         </div>
       </div>
     </div>,
