@@ -29,6 +29,8 @@ assert.doesNotMatch(html, /googletagmanager\.com\/gtag\/js/, 'O GA4 não deve se
 assert.match(privacySource, /dataLayerCommand\('consent', 'default',[\s\S]*?loadTagManager\(\);/, 'O consentimento padrão deve ser definido antes de carregar o GTM.');
 assert.doesNotMatch(privacySource, /if \(preferences\.analytics && preferences\.marketing\) loadTagManager\(\)/, 'O GTM necessário não pode depender de consentimento opcional.');
 assert.match(html, /18 horas de imersão/, 'O modal de IA para Negócios deve incluir a carga horária publicada.');
+assert.match(html, /Confira como foram outras edições/, 'O modal de IA para Negócios deve incluir a galeria de edições anteriores.');
+assert.match(html, /formato-treinamentos\.webp/, 'A galeria do programa deve incluir fotos locais de edições anteriores.');
 assert.match(programModalSource, /role="dialog"[\s\S]*aria-modal="true"/, 'O modal de programa deve expor semântica acessível.');
 assert.match(html, /Validação concluída\. Nenhum dado foi enviado/, 'O formulário sem endpoint não pode simular envio bem-sucedido.');
 assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/, 'As fontes devem ser servidas localmente.');

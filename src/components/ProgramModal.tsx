@@ -111,6 +111,35 @@ export function ProgramModal({ open, program, image, imageAlt, onClose }: Progra
               <h3 id="program-audience-title">Esse curso é para você?</h3>
               <p>{program.audience}</p>
             </section>
+
+            {program.gallery.length > 0 && (
+              <section className="program-modal-section program-gallery" aria-labelledby="program-gallery-title">
+                <p className="eyebrow">Experiências 3ADS EDU</p>
+                <h3 id="program-gallery-title">Confira como foram outras edições</h3>
+                <p>Veja alguns momentos dos encontros em um movimento contínuo.</p>
+                <div className="program-gallery-viewport" aria-label={`Fotos de edições anteriores de ${program.title}`} tabIndex={0}>
+                  <div className="program-gallery-track">
+                    {[false, true].map((duplicate) => (
+                      <div key={duplicate ? 'duplicate' : 'original'} className="program-gallery-set" role={duplicate ? undefined : 'list'} aria-hidden={duplicate ? 'true' : undefined}>
+                        {program.gallery.map((photo) => (
+                          <figure key={`${duplicate ? 'duplicate' : 'original'}-${photo.src}`} className="program-gallery-item" role={duplicate ? undefined : 'listitem'}>
+                            <img
+                              src={`./images/${photo.src}`}
+                              alt={duplicate ? '' : photo.alt}
+                              width={photo.width}
+                              height={photo.height}
+                              style={{ objectPosition: photo.position }}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </figure>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
           </div>
 
           <aside className="program-contact-card" aria-labelledby="program-contact-title">

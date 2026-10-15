@@ -180,7 +180,7 @@ h3 { letter-spacing: -.035em; font-weight: 400; }
 .program-modal-visual { height: clamp(150px, 47vw, 230px); margin: 14px 20px; overflow: hidden; border-radius: 11px; background: #0a1418; }
 .program-modal-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center 46%; }
 .program-modal-body { display: grid; grid-template-columns: 1fr; }
-.program-modal-content { padding: 28px 20px 42px; }
+.program-modal-content { min-width: 0; padding: 28px 20px 42px; }
 .program-modal-headline { max-width: 800px; font-size: clamp(22px, 5.7vw, 38px); line-height: 1.18; letter-spacing: -.04em; text-wrap: balance; }
 .program-modal-duration { display: inline-flex; align-items: center; gap: 9px; margin-top: 22px; padding: 9px 12px; color: #315e6b; background: #e4f3f6; border-radius: 999px; font-size: 12px; font-weight: 600; }
 .program-modal-section { padding-top: 30px; margin-top: 30px; border-top: 1px solid var(--line); }
@@ -190,7 +190,16 @@ h3 { letter-spacing: -.035em; font-weight: 400; }
 .program-learning-list { display: grid; gap: 13px; margin: 21px 0 0; padding: 0; list-style: none; }
 .program-learning-list li { display: flex; align-items: flex-start; gap: 11px; color: #394344; font-size: 14px; line-height: 1.55; }
 .program-learning-list svg { flex: none; margin-top: 2px; color: #39798c; }
-.program-contact-card { padding: 32px 20px max(34px, env(safe-area-inset-bottom)); color: #f5f7f3; background: #182323; }
+.program-gallery { min-width: 0; }
+.program-gallery-viewport { --program-gallery-gap: 12px; width: 100%; min-width: 0; max-width: 100%; margin-top: 22px; overflow: hidden; }
+.program-gallery-viewport:focus-visible { outline: 2px solid #39798c; outline-offset: 5px; border-radius: 9px; }
+.program-gallery-track { display: flex; width: max-content; gap: var(--program-gallery-gap); animation: program-gallery-loop 38s linear infinite; will-change: transform; }
+.program-gallery-set { display: flex; gap: var(--program-gallery-gap); }
+.program-gallery-item { width: clamp(210px, 68vw, 290px); aspect-ratio: 4 / 5; flex: none; overflow: hidden; border-radius: 11px; background: #dfe6e3; }
+.program-gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+.program-gallery-item:hover img { transform: scale(1.025); }
+@keyframes program-gallery-loop { to { transform: translate3d(calc(-50% - (var(--program-gallery-gap) / 2)), 0, 0); } }
+.program-contact-card { min-width: 0; padding: 32px 20px max(34px, env(safe-area-inset-bottom)); color: #f5f7f3; background: #182323; }
 .program-contact-card > .eyebrow { color: var(--blue); }
 .program-contact-card > h3 { margin-top: 13px; font-size: clamp(27px, 5vw, 38px); line-height: 1.16; }
 .program-contact-card > p:not(.eyebrow) { max-width: 580px; margin-top: 14px; color: #bdc9c5; font-size: 13px; line-height: 1.6; }
@@ -530,6 +539,7 @@ figcaption > span { font-size: 11px; color: var(--muted); }
   .program-modal-header { padding: 25px 30px; }
   .program-modal-visual { height: clamp(210px, 28vw, 330px); margin: 22px 30px; border-radius: 14px; }
   .program-modal-content { padding: 36px 30px 50px; }
+  .program-gallery-viewport { --program-gallery-gap: 14px; }
   .program-contact-card { padding: 38px 30px 42px; }
   .program-form-row { grid-template-columns: 1fr 1fr; gap: 12px; }
   .privacy-banner { align-items: center; flex-direction: row; gap: 28px; padding: 22px; }
@@ -545,7 +555,13 @@ figcaption > span { font-size: 11px; color: var(--muted); }
 }
 @media (min-width: 1024px) {
   .program-modal-body { grid-template-columns: minmax(0, 1.2fr) minmax(390px, .8fr); align-items: start; }
+  .program-gallery-item { width: clamp(230px, 22vw, 300px); }
   .program-contact-card { position: sticky; top: 115px; min-height: calc(100dvh - 159px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .program-gallery-viewport { overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-color: #8da0a1 transparent; scrollbar-width: thin; }
+  .program-gallery-track { animation: none; will-change: auto; }
+  .program-gallery-set[aria-hidden="true"] { display: none; }
 }
 @media (max-width: 380px) {
   .hero-copy h1 { font-size: 36px; }
