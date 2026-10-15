@@ -11,15 +11,18 @@
       }
     </script>
     <meta name="theme-color" content="#182323" />
-    <meta name="description" content="Desenvolva sua equipe em IA, marketing e vendas. Programas práticos da 3ADS EDU, construídos para os desafios da sua empresa." />
+    <meta name="description" content="Treinamentos corporativos, workshops, mentorias e consultorias em inteligência artificial, marketing e vendas para desenvolver equipes e acelerar empresas." />
+    <meta name="author" content="3ADS EDU" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://3adsedu.com.br/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://3adsedu.com.br/" />
+    <link rel="alternate" hreflang="x-default" href="https://3adsedu.com.br/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="3ADS EDU" />
-    <meta property="og:title" content="3ADS EDU — O próximo salto começa no seu time" />
-    <meta property="og:description" content="Programas práticos para desenvolver equipes em inteligência artificial, marketing e vendas." />
+    <meta property="og:title" content="Treinamentos corporativos em IA, Marketing e Vendas | 3ADS EDU" />
+    <meta property="og:description" content="Programas práticos de educação corporativa para desenvolver equipes em inteligência artificial, marketing e vendas." />
     <meta property="og:url" content="https://3adsedu.com.br/" />
     <meta property="og:image" content="https://3adsedu.com.br/media/edu-hero-2-poster.jpg" />
     <meta property="og:image:width" content="1280" />
@@ -27,8 +30,8 @@
     <meta property="og:image:alt" content="Equipe em uma experiência de educação corporativa da 3ADS EDU" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="3ADS EDU — O próximo salto começa no seu time" />
-    <meta name="twitter:description" content="Programas práticos para desenvolver equipes em inteligência artificial, marketing e vendas." />
+    <meta name="twitter:title" content="Treinamentos corporativos em IA, Marketing e Vendas | 3ADS EDU" />
+    <meta name="twitter:description" content="Programas práticos de educação corporativa para desenvolver equipes em inteligência artificial, marketing e vendas." />
     <meta name="twitter:image" content="https://3adsedu.com.br/media/edu-hero-2-poster.jpg" />
     <meta name="twitter:image:alt" content="Equipe em uma experiência de educação corporativa da 3ADS EDU" />
 
@@ -38,16 +41,68 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "3ADS IA E EDUCAÇÃO",
-        "legalName": "3ADS INTELIGÊNCIA ARTIFICIAL E EDUCAÇÃO LTDA.",
-        "url": "https://3adsedu.com.br/",
-        "logo": "https://3adsedu.com.br/brand/3ads-edu-blue.png",
-        "email": "atendimento@3adsedu.com.br",
-        "areaServed": "BR"
+        "@graph": [
+          {
+            "@type": "EducationalOrganization",
+            "@id": "https://3adsedu.com.br/#organizacao",
+            "name": "3ADS EDU",
+            "legalName": "3ADS INTELIGÊNCIA ARTIFICIAL E EDUCAÇÃO LTDA.",
+            "url": "https://3adsedu.com.br/",
+            "logo": { "@type": "ImageObject", "url": "https://3adsedu.com.br/brand/3ads-edu-blue.png" },
+            "email": "atendimento@3adsedu.com.br",
+            "telephone": "+55 62 98200-5986",
+            "areaServed": { "@type": "Country", "name": "Brasil" },
+            "knowsAbout": ["Educação corporativa", "Inteligência artificial", "Marketing", "Vendas", "Customer Experience"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://3adsedu.com.br/#website",
+            "url": "https://3adsedu.com.br/",
+            "name": "3ADS EDU",
+            "inLanguage": "pt-BR",
+            "publisher": { "@id": "https://3adsedu.com.br/#organizacao" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://3adsedu.com.br/#pagina",
+            "url": "https://3adsedu.com.br/",
+            "name": "Treinamentos corporativos em IA, Marketing e Vendas | 3ADS EDU",
+            "description": "Treinamentos corporativos, workshops, mentorias e consultorias em inteligência artificial, marketing e vendas para desenvolver equipes.",
+            "inLanguage": "pt-BR",
+            "isPartOf": { "@id": "https://3adsedu.com.br/#website" },
+            "about": { "@id": "https://3adsedu.com.br/#organizacao" },
+            "mainEntity": { "@id": "https://3adsedu.com.br/#programas" }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://3adsedu.com.br/#programas",
+            "name": "Programas de educação corporativa da 3ADS EDU",
+            "numberOfItems": 7,
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "IA para Negócios" },
+              { "@type": "ListItem", "position": 2, "name": "Growth Marketing e IA" },
+              { "@type": "ListItem", "position": 3, "name": "Técnicas de Vendas e CRM" },
+              { "@type": "ListItem", "position": 4, "name": "Atendimento e Customer Experience" },
+              { "@type": "ListItem", "position": 5, "name": "Performance: do básico ao avançado" },
+              { "@type": "ListItem", "position": 6, "name": "Tráfego Pago" },
+              { "@type": "ListItem", "position": 7, "name": "Personal Branding e Apresentações de Alto Impacto" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://3adsedu.com.br/#perguntas-frequentes",
+            "mainEntity": [
+              { "@type": "Question", "name": "O conteúdo é adaptado à minha empresa?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Consideramos os objetivos do negócio, o contexto da empresa e o nível de conhecimento da equipe para conectar o conteúdo aos desafios reais dos participantes." } },
+              { "@type": "Question", "name": "Os encontros são presenciais ou online?", "acceptedAnswer": { "@type": "Answer", "text": "Os programas podem ser realizados presencialmente ou online. O formato mais adequado é definido de acordo com os objetivos, o perfil dos participantes e a dinâmica desejada para a experiência." } },
+              { "@type": "Question", "name": "Quais formatos de programa estão disponíveis?", "acceptedAnswer": { "@type": "Answer", "text": "A 3ADS EDU desenvolve workshops, imersões, treinamentos, consultorias e mentorias. A recomendação do formato acontece depois de entendermos o desafio e o resultado que sua empresa deseja alcançar." } },
+              { "@type": "Question", "name": "Como sei qual programa é ideal para a minha equipe?", "acceptedAnswer": { "@type": "Answer", "text": "Começamos com uma conversa de diagnóstico. A partir dela, avaliamos o desafio, o público, o momento da empresa e os objetivos esperados para recomendar a solução mais adequada." } },
+              { "@type": "Question", "name": "Os programas são apenas teóricos?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Os conteúdos são conectados à prática e podem incluir exercícios, discussões, ferramentas, produção de materiais e aplicação em desafios reais da empresa." } }
+            ]
+          }
+        ]
       }
     </script>
-    <title>3ADS EDU — O próximo salto começa no seu time</title>
+    <title>Treinamentos corporativos em IA, Marketing e Vendas | 3ADS EDU</title>
   </head>
   <body>
     <div id="root"></div>

@@ -35,7 +35,7 @@ function Programs() {
         <Reveal>
           <article className="featured-program">
             <button type="button" className="ai-art program-modal-image-trigger" aria-label={`Conhecer o programa: ${featured.title}`} aria-haspopup="dialog" aria-controls={`program-modal-${featured.slug}`} onClick={() => openProgram(featured.slug)}>
-              <img src={`./images/${featured.image}`} alt="" width="1400" height="800" decoding="async" />
+              <img src={`./images/${featured.image}`} alt="" width="1400" height="800" loading="lazy" decoding="async" fetchPriority="low" />
               <div className="art-top"><span>IA + INTELIGÊNCIA HUMANA</span><span>01 / 07</span></div>
               <div className="art-bottom"><span className="status-dot" /> O FUTURO JÁ ESTÁ NA SUA ROTINA.</div>
             </button>
@@ -102,7 +102,7 @@ function Formats() {
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="faq-section section-space" aria-labelledby="faq-title">
+    <section id="perguntas-frequentes" className="faq-section section-space" aria-labelledby="faq-title">
       <div className="page-container faq-grid">
         <Reveal><SectionLabel>Uma boa conversa</SectionLabel><h2 id="faq-title">Vamos tirar<br />suas dúvidas?</h2><p className="faq-intro">Cada equipe tem um momento.<br />Estamos aqui para entender o seu.</p><a href="#contato" className="text-link">Fale com a gente <ArrowUpRight size={18} aria-hidden="true" /></a></Reveal>
         <Reveal className="faq-list">

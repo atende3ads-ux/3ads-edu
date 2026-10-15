@@ -14,8 +14,9 @@ export function ClientLogos() {
                     alt={duplicate ? '' : name}
                     width="188"
                     height="100"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
+                    fetchPriority="low"
                     draggable={false}
                   />
                 </li>

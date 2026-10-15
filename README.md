@@ -1,6 +1,6 @@
 # 3ADS EDU
 
-Landing page em React + TypeScript + Tailwind CSS, com Vite e ícones Lucide. Copy adaptada para a 3ADS EDU, identidade oficial da marca e composição editorial inspirada na referência Nevio. Sem formulário ou backend.
+Landing page em React + TypeScript + Tailwind CSS, com Vite e ícones Lucide. Copy adaptada para a 3ADS EDU, identidade oficial da marca e composição editorial inspirada na referência Nevio. O formulário é validado no navegador; não há backend ou webhook configurado.
 
 - Repositório: [atende3ads-ux/3ads-edu](https://github.com/atende3ads-ux/3ads-edu)
 - Site: [3adsedu.com.br](https://3adsedu.com.br/)
@@ -78,9 +78,9 @@ scripts/
 
 A página contém abertura, marcas, desafios, sete programas, quatro formatos, metodologia, experiências, mentores, FAQ e contato.
 
-Os botões de contato abrem o WhatsApp oficial **+55 (62) 98200-5986**, com a mensagem fornecida no briefing. Não enviam a mensagem automaticamente. Com exceção de **IA para Negócios**, os programas apontam para as respectivas páginas oficiais da 3ADS. O evento `cta_click` não contém PII e só entra no `dataLayer` quando as categorias opcionais necessárias estiverem autorizadas.
+Os botões de contato abrem o WhatsApp oficial **+55 (62) 98200-5986**, com a mensagem fornecida no briefing. Não enviam a mensagem automaticamente. Todos os sete programas abrem modais internos. O evento `cta_click` não contém PII e só entra no `dataLayer` quando as categorias opcionais necessárias estiverem autorizadas.
 
-O card **IA para Negócios** abre um modal interno com o escopo publicado em `3ads.com.br`, incluindo carga horária, aprendizados, descrição e público. Os demais programas continuam apontando para suas páginas externas. O formulário do modal replica os campos essenciais e a validação do formulário institucional, mas não envia dados: o endpoint Elementor depende do WordPress, reCAPTCHA e mesma origem, e nenhum destino próprio foi confirmado para `3adsedu.com.br`. Após a validação, a interface informa essa limitação e oferece o WhatsApp como alternativa, sem incluir os dados preenchidos na URL.
+Cada programa abre um modal interno com escopo, carga horária, aprendizados, descrição, público e galeria. O formulário replica os campos essenciais e a validação do formulário institucional, mas não envia dados: nenhum endpoint HTTPS próprio foi confirmado para `3adsedu.com.br`. Após a validação, a interface informa essa limitação e oferece o WhatsApp como alternativa, sem incluir os dados preenchidos na URL.
 
 ## Privacidade e medição
 
@@ -91,6 +91,7 @@ O card **IA para Negócios** abre um modal interno com o escopo publicado em `3a
 - As tags publicadas dentro do GTM devem ter verificações de consentimento compatíveis com `analytics_storage`, `ad_storage`, `ad_user_data` e `ad_personalization`, inclusive tags de terceiros sem suporte nativo ao Consent Mode.
 - A ficha informa Clarity `yxrgmrz2ip`, mas o contêiner publicado usa `nbgrz39vnu`. A divergência precisa ser resolvida no GTM antes de afirmar qual propriedade recebe os dados.
 - Política de Privacidade e Termos de Uso não foram publicados: os respectivos conteúdos jurídicos e a aprovação ainda não foram fornecidos.
+- A CSP permanece em `Report-Only` para observação segura no ambiente publicado. Ela libera os hosts oficiais necessários ao GTM, Google Analytics e Google Ads, além dos fornecedores já usados pelo contêiner. YouTube não é liberado porque a página não incorpora um player. Webhook não é liberado porque não há URL de destino confirmada; quando houver, deve ser incluída nominalmente em `connect-src` e `form-action`, nunca por curinga amplo.
 
 ### Provas sociais pendentes
 
@@ -117,7 +118,7 @@ Todos os logos e fotografias estão salvos localmente, sem dependência de hotli
 - Retrato atualizado de Nathália Machado: arquivo fornecido pelo usuário, recortado e convertido para WebP em 576 × 576 para manter a proporção dos demais trainers. O PNG original permanece preservado fora do projeto.
 - Thumbnails dos sete programas: arquivos fornecidos pelo usuário e convertidos para WebP em 1400 × 800 para uso responsivo nos cards.
 
-`edu-hero-2.mp4` é o vídeo escolhido pelo usuário: aproximadamente 6 segundos, 1920 × 1080, 24 fps, 1,68 MB, H.264, sem áudio e faststart. Os originais do Desktop não foram modificados. O vídeo reproduz automaticamente em loop, sem controles visíveis, e tem imagem de capa. Não inicia automaticamente quando o sistema solicita movimento reduzido.
+`edu-hero-2.mp4` é o vídeo escolhido pelo usuário: aproximadamente 6 segundos, 1920 × 1080, 24 fps, 1,68 MB, H.264, sem áudio e faststart. Os originais do Desktop não foram modificados. A capa WebP é priorizada; o vídeo é carregado depois do evento `load`, reproduz em loop e não é baixado quando o sistema solicita movimento reduzido ou o navegador indica economia de dados.
 
 Geist é servida localmente em WOFF2, com fallback para a fonte do sistema. As animações usam CSS e IntersectionObserver, sem bibliotecas adicionais.
 

@@ -10,17 +10,24 @@ const html = await readFile(path.join(dist, 'index.html'), 'utf8');
 const htaccess = await readFile(path.join(dist, '.htaccess'), 'utf8');
 const robots = await readFile(path.join(dist, 'robots.txt'), 'utf8');
 const sitemap = await readFile(path.join(dist, 'sitemap.xml'), 'utf8');
+const llm = await readFile(path.join(dist, 'llm.txt'), 'utf8');
+const llms = await readFile(path.join(dist, 'llms.txt'), 'utf8');
 const privacySource = await readFile(path.join(root, 'src/privacy.ts'), 'utf8');
 const appSource = await readFile(path.join(root, 'src/App.tsx'), 'utf8');
 const programModalSource = await readFile(path.join(root, 'src/components/ProgramModal.tsx'), 'utf8');
 const programDetailsSource = await readFile(path.join(root, 'src/programDetails.ts'), 'utf8');
 
 assert.match(html, /<html\b[^>]*lang="pt-BR"[^>]*data-standalone/, 'O HTML deve ser pt-BR e permitir abertura local.');
-assert.match(html, /<title>3ADS EDU/, 'O título da página deve identificar a 3ADS EDU.');
+assert.match(html, /<title>Treinamentos corporativos em IA, Marketing e Vendas \| 3ADS EDU<\/title>/, 'O título deve descrever a oferta e identificar a 3ADS EDU.');
+assert.match(html, /name="description" content="Treinamentos corporativos, workshops, mentorias e consultorias/, 'A descrição SEO deve resumir os serviços da página.');
 assert.match(html, /<link rel="canonical" href="https:\/\/3adsedu\.com\.br\/"/, 'A canonical pública está ausente.');
+assert.match(html, /hreflang="pt-BR"/, 'O idioma canônico deve ser declarado.');
 assert.match(html, /property="og:title"/, 'Os metadados Open Graph estão ausentes.');
 assert.match(html, /name="twitter:card"/, 'Os metadados do Twitter estão ausentes.');
 assert.match(html, /application\/ld\+json/, 'Os dados estruturados estão ausentes.');
+assert.match(html, /"@type": "EducationalOrganization"/, 'Os dados estruturados da organização educacional estão ausentes.');
+assert.match(html, /"@type": "FAQPage"/, 'Os dados estruturados de perguntas frequentes estão ausentes.');
+assert.match(html, /"@type": "ItemList"/, 'Os dados estruturados dos programas estão ausentes.');
 assert.match(html, /<div id="root"><\/div>/, 'O ponto de montagem do React está ausente.');
 assert.match(html, /<script type="module">[\s\S]+<\/script>/, 'O JavaScript compilado deve estar incorporado no HTML.');
 assert.match(html, /<style>[\s\S]+<\/style>/, 'O CSS compilado deve estar incorporado no HTML.');
@@ -45,8 +52,16 @@ assert.match(html, /Validação concluída\. Nenhum dado foi enviado/, 'O formul
 assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/, 'As fontes devem ser servidas localmente.');
 assert.match(robots, /Sitemap: https:\/\/3adsedu\.com\.br\/sitemap\.xml/, 'O robots.txt deve apontar para o sitemap canônico.');
 assert.match(sitemap, /<loc>https:\/\/3adsedu\.com\.br\/<\/loc>/, 'O sitemap deve conter a URL pública canônica.');
+assert.match(sitemap, /<lastmod>2026-10-15<\/lastmod>/, 'O sitemap deve refletir a revisão atual.');
+assert.match(llm, /https:\/\/3adsedu\.com\.br\/#programas/, 'O llm.txt deve indicar a seção canônica de programas.');
+assert.match(llms, /https:\/\/3adsedu\.com\.br\/#perguntas-frequentes/, 'O llms.txt deve indicar as perguntas frequentes.');
 assert.match(htaccess, /Content-Security-Policy-Report-Only/, 'A CSP deve iniciar em modo Report-Only.');
 assert.match(htaccess, /Referrer-Policy/, 'O cabeçalho Referrer-Policy está ausente.');
+for (const host of ['www.googletagmanager.com', '*.google-analytics.com', 'www.googleadservices.com', 'googleads.g.doubleclick.net', 'pagead2.googlesyndication.com', 'ad.doubleclick.net']) {
+  assert.ok(htaccess.includes(host), `A CSP deve autorizar o host necessário ${host}.`);
+}
+assert.doesNotMatch(htaccess, /unsafe-eval/, 'A CSP não deve liberar unsafe-eval.');
+assert.doesNotMatch(htaccess, /youtube(?:-nocookie)?\.com/, 'A CSP não deve liberar YouTube sem um player incorporado.');
 assert.doesNotMatch(htaccess, /__SCRIPT_HASHES__/, 'Os hashes da CSP não foram atualizados.');
 for (const match of html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)) {
   const hash = `'sha256-${createHash('sha256').update(match[1]).digest('base64')}'`;

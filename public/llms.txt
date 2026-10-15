@@ -1,11 +1,25 @@
 # 3ADS EDU
 
-> Programas de educação corporativa para desenvolver equipes em inteligência artificial, marketing e vendas.
+> Educação corporativa para desenvolver equipes em inteligência artificial, marketing, vendas, atendimento, performance e comunicação.
 
-- Site oficial: https://3adsedu.com.br/
-- Programas: IA para Negócios; Growth Marketing e IA; Técnicas de Vendas e CRM; Atendimento e Customer Experience; Performance; Tráfego Pago; Personal Branding e Apresentações de Alto Impacto.
-- Formatos: treinamentos, workshops, mentorias e consultorias, presenciais ou online.
-- Contato: atendimento@3adsedu.com.br
-- Região atendida: Brasil.
+## Conteúdo principal
 
-O conteúdo público e canônico está disponível em https://3adsedu.com.br/.
+- [Página oficial](https://3adsedu.com.br/): visão geral da 3ADS EDU.
+- [Programas](https://3adsedu.com.br/#programas): sete programas para equipes e empresas.
+- [Formatos](https://3adsedu.com.br/#formatos): treinamentos, workshops, mentorias e consultorias, presenciais ou online.
+- [Metodologia](https://3adsedu.com.br/#como-funciona): entender, desenhar, praticar e acompanhar.
+- [Perguntas frequentes](https://3adsedu.com.br/#perguntas-frequentes): contratação, formatos, duração, participantes e resultados.
+- [Contato](https://3adsedu.com.br/#contato): conversa inicial sobre o desafio da equipe.
+
+## Programas
+
+- IA para Negócios
+- Growth Marketing e IA
+- Técnicas de Vendas e CRM
+- Atendimento e Customer Experience
+- Performance: do básico ao avançado
+- Tráfego Pago
+- Personal Branding e Apresentações de Alto Impacto
+
+Contato institucional: atendimento@3adsedu.com.br
+Área atendida: Brasil.
