@@ -7,10 +7,12 @@ import type { ProgramDetail } from '../programDetails';
 type ProgramModalProps = {
   open: boolean;
   program: ProgramDetail;
+  image: string;
+  imageAlt: string;
   onClose: () => void;
 };
 
-export function ProgramModal({ open, program, onClose }: ProgramModalProps) {
+export function ProgramModal({ open, program, image, imageAlt, onClose }: ProgramModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
@@ -82,6 +84,10 @@ export function ProgramModal({ open, program, onClose }: ProgramModalProps) {
             <X size={24} aria-hidden="true" />
           </button>
         </header>
+
+        <figure className="program-modal-visual">
+          <img src={image} alt={imageAlt} width="1400" height="800" decoding="async" />
+        </figure>
 
         <div className="program-modal-body">
           <div className="program-modal-content">

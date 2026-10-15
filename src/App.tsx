@@ -60,7 +60,13 @@ function Programs() {
         </div>
         <Reveal className="program-help"><div><h3>Ainda está entendendo por onde começar?</h3><p>Conte o momento da sua equipe. Vamos conversar sobre as prioridades.</p></div><ActionLink>Encontrar o programa para meu time</ActionLink></Reveal>
       </div>
-      <ProgramModal open={programModalOpen} program={featuredDetails} onClose={() => setProgramModalOpen(false)} />
+      <ProgramModal
+        open={programModalOpen}
+        program={featuredDetails}
+        image={`./images/${featured.image}`}
+        imageAlt={featured.alt}
+        onClose={() => setProgramModalOpen(false)}
+      />
     </section>
   );
 }
