@@ -78,7 +78,9 @@ scripts/
 
 A página contém abertura, marcas, desafios, sete programas, quatro formatos, metodologia, experiências, mentores, FAQ e contato.
 
-Os botões de contato abrem o WhatsApp oficial **+55 (62) 98200-5986**, com a mensagem fornecida no briefing. Não enviam a mensagem automaticamente. Os programas apontam para as respectivas páginas oficiais da 3ADS. Nenhum formulário foi incluído. O evento `cta_click` não contém PII e só entra no `dataLayer` quando as categorias opcionais necessárias estiverem autorizadas.
+Os botões de contato abrem o WhatsApp oficial **+55 (62) 98200-5986**, com a mensagem fornecida no briefing. Não enviam a mensagem automaticamente. Com exceção de **IA para Negócios**, os programas apontam para as respectivas páginas oficiais da 3ADS. O evento `cta_click` não contém PII e só entra no `dataLayer` quando as categorias opcionais necessárias estiverem autorizadas.
+
+O card **IA para Negócios** abre um modal interno com o escopo publicado em `3ads.com.br`, incluindo carga horária, aprendizados, descrição e público. Os demais programas continuam apontando para suas páginas externas. O formulário do modal replica os campos essenciais e a validação do formulário institucional, mas não envia dados: o endpoint Elementor depende do WordPress, reCAPTCHA e mesma origem, e nenhum destino próprio foi confirmado para `3adsedu.com.br`. Após a validação, a interface informa essa limitação e oferece o WhatsApp como alternativa, sem incluir os dados preenchidos na URL.
 
 ## Privacidade e medição
 

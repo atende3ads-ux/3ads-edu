@@ -7,7 +7,9 @@ import { Logo } from './components/Logo';
 import { Reveal } from './components/Reveal';
 import { ClientLogos } from './components/ClientLogos';
 import { PrivacyConsent } from './components/PrivacyConsent';
+import { ProgramModal } from './components/ProgramModal';
 import { formats, mentors, navigation, programs, questions, steps } from './content';
+import { programDetails } from './programDetails';
 import { openPrivacySettings, trackAnalyticsEvent } from './privacy';
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -16,6 +18,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function Programs() {
   const featured = programs[0];
+  const [programModalOpen, setProgramModalOpen] = useState(false);
+  const featuredDetails = programDetails[featured.slug];
   return (
     <section id="programas" className="section-space programs-section" aria-labelledby="programs-title">
       <div className="page-container">
@@ -34,7 +38,10 @@ function Programs() {
               <span className="tag">Inteligência artificial</span>
               <div><h3>{featured.title}</h3><p>{featured.description}</p></div>
               <div className="flex flex-wrap gap-2">{featured.tags.map(tag => <span key={tag} className="topic-tag">{tag}</span>)}</div>
-              <a href={`https://3ads.com.br/produtos-edu/${featured.slug}/`} target="_blank" rel="noopener noreferrer" className="program-link" onClick={() => trackAnalyticsEvent('program_click', { program: featured.slug })}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></a>
+              <button type="button" className="program-link program-modal-trigger" aria-haspopup="dialog" aria-controls={`program-modal-${featured.slug}`} onClick={() => {
+                trackAnalyticsEvent('program_click', { program: featured.slug });
+                setProgramModalOpen(true);
+              }}>Conhecer o programa <ArrowUpRight size={21} aria-hidden="true" /></button>
             </div>
           </article>
         </Reveal>
@@ -53,6 +60,7 @@ function Programs() {
         </div>
         <Reveal className="program-help"><div><h3>Ainda está entendendo por onde começar?</h3><p>Conte o momento da sua equipe. Vamos conversar sobre as prioridades.</p></div><ActionLink>Encontrar o programa para meu time</ActionLink></Reveal>
       </div>
+      <ProgramModal open={programModalOpen} program={featuredDetails} onClose={() => setProgramModalOpen(false)} />
     </section>
   );
 }

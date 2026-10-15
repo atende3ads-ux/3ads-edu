@@ -11,6 +11,7 @@ const htaccess = await readFile(path.join(dist, '.htaccess'), 'utf8');
 const robots = await readFile(path.join(dist, 'robots.txt'), 'utf8');
 const sitemap = await readFile(path.join(dist, 'sitemap.xml'), 'utf8');
 const privacySource = await readFile(path.join(root, 'src/privacy.ts'), 'utf8');
+const programModalSource = await readFile(path.join(root, 'src/components/ProgramModal.tsx'), 'utf8');
 
 assert.match(html, /<html\b[^>]*lang="pt-BR"[^>]*data-standalone/, 'O HTML deve ser pt-BR e permitir abertura local.');
 assert.match(html, /<title>3ADS EDU/, 'O título da página deve identificar a 3ADS EDU.');
@@ -27,6 +28,9 @@ assert.match(html, /GTM-K82W4KD/, 'O contêiner do Google Tag Manager deve estar
 assert.doesNotMatch(html, /googletagmanager\.com\/gtag\/js/, 'O GA4 não deve ser instalado diretamente além do GTM.');
 assert.match(privacySource, /dataLayerCommand\('consent', 'default',[\s\S]*?loadTagManager\(\);/, 'O consentimento padrão deve ser definido antes de carregar o GTM.');
 assert.doesNotMatch(privacySource, /if \(preferences\.analytics && preferences\.marketing\) loadTagManager\(\)/, 'O GTM necessário não pode depender de consentimento opcional.');
+assert.match(html, /18 horas de imersão/, 'O modal de IA para Negócios deve incluir a carga horária publicada.');
+assert.match(programModalSource, /role="dialog"[\s\S]*aria-modal="true"/, 'O modal de programa deve expor semântica acessível.');
+assert.match(html, /Validação concluída\. Nenhum dado foi enviado/, 'O formulário sem endpoint não pode simular envio bem-sucedido.');
 assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/, 'As fontes devem ser servidas localmente.');
 assert.match(robots, /Sitemap: https:\/\/3adsedu\.com\.br\/sitemap\.xml/, 'O robots.txt deve apontar para o sitemap canônico.');
 assert.match(sitemap, /<loc>https:\/\/3adsedu\.com\.br\/<\/loc>/, 'O sitemap deve conter a URL pública canônica.');
