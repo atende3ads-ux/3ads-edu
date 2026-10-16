@@ -39,9 +39,13 @@ assert.match(privacySource, /dataLayerCommand\('consent', 'default',[\s\S]*?load
 assert.doesNotMatch(privacySource, /if \(preferences\.analytics && preferences\.marketing\) loadTagManager\(\)/, 'O GTM necessário não pode depender de consentimento opcional.');
 assert.match(html, /18 horas de imersão/, 'O modal de IA para Negócios deve incluir a carga horária publicada.');
 assert.match(appSource, /className="ai-art program-modal-image-trigger"[\s\S]*aria-haspopup="dialog"/, 'A imagem de IA para Negócios deve abrir o modal com semântica acessível.');
-for (const slug of ['ia-para-negocios', 'growth-e-sales', 'tecnicas-de-vendas-e-crm', 'atendimento-cx', 'performance', 'trafego-pago', 'personal-branding']) {
+const programSlugs = ['ia-para-negocios', 'growth-marketing-e-ia', 'tecnicas-de-vendas-e-crm', 'atendimento-e-customer-experience', 'performance-do-basico-ao-avancado', 'trafego-pago', 'personal-branding-e-apresentacoes-de-alto-impacto'];
+for (const slug of programSlugs) {
   assert.match(programDetailsSource, new RegExp(`slug: '${slug}'`), `O conteúdo do programa ${slug} está ausente.`);
+  assert.ok(htaccess.includes(slug), `A rota compartilhável ${slug} não está autorizada no .htaccess.`);
 }
+assert.match(appSource, /window\.history\.pushState\(\{ programModal: slug \}/, 'A abertura do modal deve atualizar a URL sem recarregar a página.');
+assert.match(appSource, /window\.addEventListener\('popstate'/, 'O modal deve acompanhar o histórico do navegador.');
 assert.doesNotMatch(appSource, /https:\/\/3ads\.com\.br\/produtos-edu\//, 'Os cards não devem redirecionar para páginas externas de programas.');
 assert.match(html, /Confira como foram outras edições/, 'O modal de IA para Negócios deve incluir a galeria de edições anteriores.');
 assert.match(html, /formato-treinamentos\.webp/, 'A galeria do programa deve incluir fotos locais de edições anteriores.');

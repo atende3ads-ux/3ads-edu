@@ -1,5 +1,11 @@
 Options -Indexes
 
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(ia-para-negocios|growth-marketing-e-ia|tecnicas-de-vendas-e-crm|atendimento-e-customer-experience|performance-do-basico-ao-avancado|trafego-pago|personal-branding-e-apresentacoes-de-alto-impacto)/$ /$1 [R=308,L,NE]
+  RewriteRule ^(ia-para-negocios|growth-marketing-e-ia|tecnicas-de-vendas-e-crm|atendimento-e-customer-experience|performance-do-basico-ao-avancado|trafego-pago|personal-branding-e-apresentacoes-de-alto-impacto)$ index.html [L]
+</IfModule>
+
 <IfModule mod_headers.c>
   Header always set Content-Security-Policy-Report-Only "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'strict-dynamic' __SCRIPT_HASHES__ https://www.googletagmanager.com https://www.googleadservices.com https://www.google.com https://connect.facebook.net https://www.clarity.ms https://cdn.mida.so; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.g.doubleclick.net https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.facebook.com https://*.clarity.ms; font-src 'self' data:; media-src 'self'; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://analytics.google.com https://*.google.com https://*.g.doubleclick.net https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://ad.doubleclick.net https://*.clarity.ms https://*.bing.com https://www.facebook.com https://connect.facebook.net https://cdn.mida.so; frame-src https://www.googletagmanager.com; worker-src 'self' blob:"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"

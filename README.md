@@ -82,6 +82,8 @@ Os botões de contato abrem o WhatsApp oficial **+55 (62) 98200-5986**, com a me
 
 Cada programa abre um modal interno com escopo, carga horária, aprendizados, descrição, público e galeria. O formulário replica os campos essenciais e a validação do formulário institucional, mas não envia dados: nenhum endpoint HTTPS próprio foi confirmado para `3adsedu.com.br`. Após a validação, a interface informa essa limitação e oferece o WhatsApp como alternativa, sem incluir os dados preenchidos na URL.
 
+Os modais também têm URLs compartilháveis no formato `https://3adsedu.com.br/{slug}`. O `.htaccess` entrega o aplicativo para esses sete caminhos, remove a barra final para manter os ativos relativos corretos e o React sincroniza modal, título, canonical, histórico e botão Voltar do navegador. Ao abrir um modal por um card, a URL muda sem recarregar a página; ao acessar o endereço diretamente, o modal correspondente já aparece aberto.
+
 ## Privacidade e medição
 
 - Consentimento em modo básico, com estado inicial negado para `analytics_storage`, `ad_storage`, `ad_user_data` e `ad_personalization`.

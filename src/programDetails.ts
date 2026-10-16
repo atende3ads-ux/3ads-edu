@@ -58,8 +58,8 @@ export const programDetails: Record<string, ProgramDetail> = {
     audience: 'O curso é ideal para empreendedores que querem automatizar processos e escalar seus negócios com inteligência artificial, profissionais de marketing que desejam otimizar campanhas, personalizar conteúdos e aumentar a conversão, gestores e líderes que buscam tomar decisões mais estratégicas baseadas em dados, equipes de vendas que querem melhorar prospecção, segmentação e relacionamento com clientes e profissionais de inovação e tecnologia interessados em aplicar IA para aumentar a eficiência operacional. Também é indicado para qualquer pessoa que queira aprender a utilizar inteligência artificial de forma prática e acessível para transformar negócios.',
     gallery: programGallery,
   },
-  'growth-e-sales': {
-    slug: 'growth-e-sales',
+  'growth-marketing-e-ia': {
+    slug: 'growth-marketing-e-ia',
     type: 'Mentoria',
     title: 'Growth Marketing e IA',
     headline: 'Maximize resultados com menos esforço. Aplique Growth Marketing e IA para crescer de forma inteligente e escalável!',
@@ -95,8 +95,8 @@ export const programDetails: Record<string, ProgramDetail> = {
     audience: 'O curso é ideal para vendedores, representantes comerciais e consultores de vendas, empreendedores e gestores que desejam otimizar seus processos comerciais, profissionais de atendimento e relacionamento com clientes e qualquer pessoa interessada em aprimorar suas habilidades de venda e organização comercial.',
     gallery: programGallery,
   },
-  'atendimento-cx': {
-    slug: 'atendimento-cx',
+  'atendimento-e-customer-experience': {
+    slug: 'atendimento-e-customer-experience',
     type: 'Treinamento',
     title: 'Atendimento e Customer Experience (CX)',
     headline: 'Saiba como transformar as interações em experiências memoráveis.',
@@ -115,8 +115,8 @@ export const programDetails: Record<string, ProgramDetail> = {
     audience: 'O curso é ideal para atendentes e representantes de suporte que querem melhorar suas interações com os clientes, empreendedores e empresários que desejam aumentar a satisfação e fidelizar seu público, líderes e gerentes de atendimento que buscam implementar estratégias eficazes de Customer Experience, profissionais de vendas e pós-vendas que querem fortalecer a conexão com seus clientes e equipes de marketing e customer success que desejam alinhar a experiência do cliente com a proposta da marca.',
     gallery: programGallery,
   },
-  performance: {
-    slug: 'performance',
+  'performance-do-basico-ao-avancado': {
+    slug: 'performance-do-basico-ao-avancado',
     type: 'Treinamento',
     title: 'Performance: do básico ao avançado',
     headline: 'Planeje, otimize e escale campanhas que geram resultados com mais performance e menor custo!',
@@ -149,8 +149,8 @@ export const programDetails: Record<string, ProgramDetail> = {
     audience: 'O curso é ideal para empreendedores que desejam aumentar as vendas e atrair mais clientes por meio de anúncios online, profissionais de marketing digital que buscam se especializar em tráfego pago e potencializar resultados, gestores de tráfego que querem aprimorar suas estratégias e dominar novas técnicas, freelancers e agências que desejam oferecer serviços de tráfego pago e escalar seus negócios e iniciantes no marketing digital que querem aprender do zero e construir uma carreira na área.',
     gallery: programGallery,
   },
-  'personal-branding': {
-    slug: 'personal-branding',
+  'personal-branding-e-apresentacoes-de-alto-impacto': {
+    slug: 'personal-branding-e-apresentacoes-de-alto-impacto',
     type: 'Treinamento',
     title: 'Personal Branding e Apresentações de Alto Impacto',
     headline: 'Construa autoridade, comunique com impacto e torne-se referência no seu mercado!',

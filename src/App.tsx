@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowDown, ArrowUpRight, Plus, Minus, Check, Globe2 } from 'lucide-react';
 import { Hero } from './components/Hero';
 import { Navbar } from './components/Navbar';
@@ -16,14 +16,61 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="eyebrow section-label">{children}</p>;
 }
 
+const programSlugFromPath = () => {
+  if (typeof window === 'undefined' || !/^https?:$/.test(window.location.protocol)) return null;
+  try {
+    const slug = decodeURIComponent(window.location.pathname).replace(/^\/+|\/+$/g, '');
+    return programs.some((program) => program.slug === slug) ? slug : null;
+  } catch {
+    return null;
+  }
+};
+
 function Programs() {
   const featured = programs[0];
-  const [activeProgramSlug, setActiveProgramSlug] = useState<string | null>(null);
+  const [activeProgramSlug, setActiveProgramSlug] = useState<string | null>(programSlugFromPath);
   const activeProgram = programs.find(({ slug }) => slug === activeProgramSlug) ?? featured;
   const activeProgramDetails = programDetails[activeProgram.slug];
+
+  useEffect(() => {
+    const syncModalWithUrl = () => setActiveProgramSlug(programSlugFromPath());
+    window.addEventListener('popstate', syncModalWithUrl);
+    return () => window.removeEventListener('popstate', syncModalWithUrl);
+  }, []);
+
+  useEffect(() => {
+    const defaultTitle = 'Treinamentos corporativos em IA, Marketing e Vendas | 3ADS EDU';
+    if (!/^https?:$/.test(window.location.protocol)) return;
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    const openGraphUrl = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
+    const url = activeProgramSlug ? `${window.location.origin}/${activeProgramSlug}` : `${window.location.origin}/`;
+    document.title = activeProgramSlug ? `${activeProgram.title} | 3ADS EDU` : defaultTitle;
+    canonical?.setAttribute('href', url);
+    openGraphUrl?.setAttribute('content', url);
+    return () => {
+      document.title = defaultTitle;
+      canonical?.setAttribute('href', `${window.location.origin}/`);
+      openGraphUrl?.setAttribute('content', `${window.location.origin}/`);
+    };
+  }, [activeProgram.title, activeProgramSlug]);
+
   const openProgram = (slug: string) => {
     trackAnalyticsEvent('program_click', { program: slug });
+    if (/^https?:$/.test(window.location.protocol) && programSlugFromPath() !== slug) {
+      window.history.pushState({ programModal: slug }, '', `/${slug}`);
+    }
     setActiveProgramSlug(slug);
+  };
+  const closeProgram = () => {
+    if (/^https?:$/.test(window.location.protocol) && programSlugFromPath()) {
+      if (window.history.state?.programModal) window.history.back();
+      else {
+        window.history.replaceState({}, '', '/');
+        setActiveProgramSlug(null);
+      }
+      return;
+    }
+    setActiveProgramSlug(null);
   };
   return (
     <section id="programas" className="section-space programs-section" aria-labelledby="programs-title">
@@ -69,7 +116,7 @@ function Programs() {
         program={activeProgramDetails}
         image={`./images/${activeProgram.image}`}
         imageAlt={activeProgram.alt}
-        onClose={() => setActiveProgramSlug(null)}
+        onClose={closeProgram}
       />
     </section>
   );

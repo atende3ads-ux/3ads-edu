@@ -8,13 +8,13 @@ A 3ADS EDU desenvolve treinamentos corporativos, workshops, mentorias e consulto
 
 ## Programas
 
-- IA para Negócios
-- Growth Marketing e IA
-- Técnicas de Vendas e CRM
-- Atendimento e Customer Experience
-- Performance: do básico ao avançado
-- Tráfego Pago
-- Personal Branding e Apresentações de Alto Impacto
+- [IA para Negócios](https://3adsedu.com.br/ia-para-negocios)
+- [Growth Marketing e IA](https://3adsedu.com.br/growth-marketing-e-ia)
+- [Técnicas de Vendas e CRM](https://3adsedu.com.br/tecnicas-de-vendas-e-crm)
+- [Atendimento e Customer Experience](https://3adsedu.com.br/atendimento-e-customer-experience)
+- [Performance: do básico ao avançado](https://3adsedu.com.br/performance-do-basico-ao-avancado)
+- [Tráfego Pago](https://3adsedu.com.br/trafego-pago)
+- [Personal Branding e Apresentações de Alto Impacto](https://3adsedu.com.br/personal-branding-e-apresentacoes-de-alto-impacto)
 
 ## Referências canônicas
 
